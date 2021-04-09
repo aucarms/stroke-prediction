@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Medify (Sign-On)</title>
+</head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>$(document).ready(function(){
+	var formInputs = $('input[id="patientName"],input[id="gender-select"], input[id="patientAge"], input[id="hypertension-select"], input[id="heart-disease-select"], input[id="patientGlucose"], input[id="patientBmi"]')
+	formInputs.focus(function() {
+       $(this).parent().children('p.formLabel').addClass('formTop');
+       $('div#formWrapper').addClass('darken-bg');
+       $('div.logo').addClass('logo-active');
+	});
+	formInputs.focusout(function() {
+		if ($.trim($(this).val()).length == 0){
+		$(this).parent().children('p.formLabel').removeClass('formTop');
+		}
+		$('div#formWrapper').removeClass('darken-bg');
+		$('div.logo').removeClass('logo-active');
+	});
+	$('p.formLabel').click(function(){
+		 $(this).parent().children('.form-style').focus();
+	});
+});</script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+<div id="formWrapper" class="home-page">
+
+<div id="form">
+<div class="logo">
+<h1 class="text-center head">Medify</h1>
+</div>
+
+		<form action="/home" method="post">
+			<div class="row" style="margin-top:30px;">
+			<div class="mx-auto col-12">
+			<div class="b-select-wrap">
+			<select name="gender" id="gender" class="form-control b-select" required>	
+				<option>Gender</option>
+				<option value="0">Male</option>
+				<option value="1">Female</option>
+			</select>
+			</div>
+			</div>
+			</div>
+
+			<div class="form-item" style="margin-top:30px;">
+				<p class="formLabel"> Age </p>
+				<input type="text" name="patientAge" id="patientAge" class="form-style" autocomplete="off" required/>			
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="hypertension" id="hypertension" class="form-control b-select">	
+					<option>Hypertension</option>
+					<option value="0">Never</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+			</div>
+			</div>
+		
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="heart_disease" id="heart_disease" class="form-control b-select">	
+					<option>Heart Disease</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+			</div>
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="ever_married" id="ever_married" class="form-control b-select">	
+					<option>Ever married?</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+			</div>
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="work_type" id="work_type" class="form-control b-select">	
+					<option>Work Type</option>
+					<option value="0">Government Job</option>
+					<option value="1">Never Worked</option>
+					<option value="2">Private Company</option>
+					<option value="3">Self-employed</option>
+					<option value="4">Work with Children</option>
+				</select>
+			</div>
+			</div>
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="residence_type" id="residence_type" class="form-control b-select">	
+					<option>Residence Type</option>
+					<option value="0">Rural</option>
+					<option value="1">Urban</option>
+				</select>
+			</div>
+			</div>
+			</div>
+		
+			<div class="form-item" style="margin-top:30px;">
+				<p class="formLabel"> Average Glucose Level </p>
+				<input type="text" name="avg_glucose_level" id="patientGlucose" class="form-style" autocomplete="off" required/>			
+			</div>
+
+			<div class="form-item" style="margin-top:30px;">
+				<p class="formLabel"> BMI </p>
+				<input type="text" name="patientBmi" id="patientBmi" class="form-style" autocomplete="off" required/>			
+			</div>
+
+
+			<div class="row" style="margin-top:30px;">
+				<div class="mx-auto col-12">
+				<div class="b-select-wrap">
+				<select name="smoking_status" id="smoking_status" class="form-control b-select">	
+					<option>Smoking Status</option>
+					<option value="0">Unknown</option>
+					<option value="1">Formerly Smoked</option>
+					<option value="2">Never Smoked</option>
+					<option value="3">Smokes</option>
+				</select>
+			</div>
+			</div>
+			</div>
+			<br><br><br>
+			<input type="submit" class="btn btn-primary" style="float: right;" value="Predict">
+			<br><br><br><br>
+			<strong style="color:red">{{result}}</strong>
+			<br><br><br><br><br>
+			<div style="text-align: center;">
+				<u><a href="/logout" id="logout">logout</a></u>
+			</div>
+		</form>
+		<br><br>
+		
+
+</div>
+</div>
+</body>
+</html>

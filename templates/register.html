@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Medify (Sign-On)</title>
+</head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>$(document).ready(function(){
+	var formInputs = $('input[id="username"],input[id="password"]');
+	formInputs.focus(function() {
+       $(this).parent().children('p.formLabel').addClass('formTop');
+       $('div#formWrapper').addClass('darken-bg');
+       $('div.logo').addClass('logo-active');
+	});
+	formInputs.focusout(function() {
+		if ($.trim($(this).val()).length == 0){
+		$(this).parent().children('p.formLabel').removeClass('formTop');
+		}
+		$('div#formWrapper').removeClass('darken-bg');
+		$('div.logo').removeClass('logo-active');
+	});
+	$('p.formLabel').click(function(){
+		 $(this).parent().children('.form-style').focus();
+	});
+});</script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+<div id="formWrapper">
+
+<div id="form">
+<div class="logo">
+<h1 class="text-center head">Medify</h1>
+</div>
+		<form action="/register" method="post">
+        <div class="form-item">
+        
+			<p class="formLabel">Username</p>
+			<input type="text" name="username" id="username" class="form-style" autocomplete="off"/>
+		</div>
+		<div class="form-item">
+			<p class="formLabel">Password</p>
+			<input type="password" name="password" id="password" class="form-style" />
+		<br><br>
+        </div>
+		<input type="submit" class="login pull-right" value="Create User">
+        </form>	
+		<div class="clear-fix"></div>
+		</div>
+</div>
+</div>
+</body>
+</html>
+   
+
