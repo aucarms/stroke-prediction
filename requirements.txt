@@ -1,5 +1,5 @@
 alembic==1.4.1
-appnope @ file:///opt/concourse/worker/volumes/live/5f13e5b3-5355-4541-5fc3-f08850c73cf9/volume/appnope_1606859448618/work
+appnope==0.1.2
 argon2-cffi==20.1.0
 async-generator==1.10
 attrs==20.3.0
