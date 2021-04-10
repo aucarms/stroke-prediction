@@ -22,7 +22,8 @@ app = Flask(__name__)
 app.secret_key = 'fluffyun1corn'
 app.config['SESSION_TYPE'] = 'filesystem'
 # app.config['SQLALCHEMY_DATABASE_URI'] = ("postgresql://postgres:postgres@localhost/usersignon")
-app.config['SQLALCHEMY_DATABASE_URI'] = ("postgresql://rrzkdbhssysetl:1dc36b6def1b62ce514f603f1fb5761db857a961db6c5f8df92c3caf483050de@ec2-23-21-229-200.compute-1.amazonaws.com:5432/d323i38grcstf1")
+# app.config['SQLALCHEMY_DATABASE_URI'] = ("postgresql://rrzkdbhssysetl:1dc36b6def1b62ce514f603f1fb5761db857a961db6c5f8df92c3caf483050de@ec2-23-21-229-200.compute-1.amazonaws.com:5432/d323i38grcstf1")
+app.config['SQLALCHEMY_DATABASE_URI'] = ("postgresql://d323i38grcstf1/rrzkdbhssysetl@Heroku/d323i38grcstf1")
 app.config["SQLALchemy_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app) 
