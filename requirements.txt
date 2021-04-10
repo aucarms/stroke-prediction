@@ -15,7 +15,6 @@ chardet==4.0.0
 click==7.1.2
 cloudpickle==1.6.0
 colorlover==0.3.0
-conda-package-handling==1.7.2
 confuse==1.4.0
 cryptography==3.4.7
 cufflinks==0.17.3
